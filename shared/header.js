@@ -10,6 +10,7 @@ export default function Header({navigation, HeaderTitle}) {
     }
     return(
         <ImageBackground source={require('../assets/game_bg.png')} style={styles.header}>
+        {/*<View style={styles.header}>*/}
             <View style={styles.iconView}>
                 <Icon
                     name='menu'
@@ -21,17 +22,20 @@ export default function Header({navigation, HeaderTitle}) {
                 />
             </View>
             <View style={styles.headerContent}>
+
                 <Image source={require('../assets/heart_logo.png')} style={styles.logoStyle}/>
                 <Text style={styles.headerText}>{HeaderTitle}</Text>
             </View>
+        {/*</View>*/}
+
         </ImageBackground>
     );
 }
 
 const styles=StyleSheet.create({
     header:{
-        width:'110%',
-        height: '120%',
+        width:'100%',
+        height: 60,
         flexDirection:'row',
         alignItems:'center',
         justifyContent: 'center',
@@ -55,5 +59,6 @@ const styles=StyleSheet.create({
     },
     headerContent:{
         flexDirection: 'row',
+
     }
 })

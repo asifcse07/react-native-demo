@@ -17,7 +17,7 @@ export default function Navigator()  {
                     name="My App"
                     component={DrawerNavigator}
                     options={({ navigation }) => ({
-                        headerTitle: () => (
+                        header: () => (
                             <Header navigation={navigation} HeaderTitle={'On A NEW'}/>
                         )
                     })}
