@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, Button, FlatList, TouchableOpacity, Modal} from 'react-native';
+import {View, Text, StyleSheet, Button, FlatList, TouchableOpacity, Modal,
+TouchableWithoutFeedback, Keyboard} from 'react-native';
 import {globalStyles} from '../styles/global';
 import Card from '../shared/card';
 import {Icon} from 'react-native-elements';
+import ReviewForm from './reviewForm';
 
 
 export default function Home({navigation}){
@@ -14,20 +16,31 @@ export default function Home({navigation}){
     ])
     const [openModal, setOpenModal] = useState(false);
 
+    const addReview = (review) => {
+    console.log(review)
+        review.key = Math.random().toString();
+        setReview((currentReviews)=> {
+            return [review, ...currentReviews]
+        })
+        setOpenModal(false)
+    }
+
     return(
         <View style={globalStyles.container}>
             <Modal visible={openModal}>
-                <Icon
-                    name='close'
-                    type='material'
-                    color='#517fa4'
-                    size={40}
-                    style={{...styles.modalToggle, ...styles.modalClose}}
-                    onPress={() => setOpenModal(false)}
-                />
-                <View style={styles.modalContent}>
-                    <Text style={styles.modalText}>Hi babe ite me modal!!</Text>
-                </View>
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                    <View style={styles.modalContent}>
+                        <Icon
+                            name='close'
+                            type='material'
+                            color='#517fa4'
+                            size={40}
+                            style={{...styles.modalToggle, ...styles.modalClose}}
+                            onPress={() => setOpenModal(false)}
+                        />
+                        <ReviewForm addReview={addReview}/>
+                    </View>
+                </TouchableWithoutFeedback>
             </Modal>
 
             <Icon
@@ -69,6 +82,7 @@ const styles =({
         marginBottom:0,
     },
     modalContent:{
-        flex:1
+        flex:1,
+        padding: 15,
     }
 })

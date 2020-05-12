@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, Button, Image, ImageBackground, Modal} from 'react-native';
-import { Icon } from 'react-native-elements';
+import { Icon } from "react-native-elements";
 import { DrawerActions, useNavigationState } from '@react-navigation/native';
 
 export default function Header({navigation, HeaderTitle}) {
