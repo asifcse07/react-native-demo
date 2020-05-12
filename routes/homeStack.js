@@ -12,7 +12,7 @@ const Stack = createStackNavigator();
 export default function Navigator()  {
     return(
         <NavigationContainer>
-            <Stack.Navigator screenOptions={{ headerStyle: { backgroundColor: 'papayawhip', height:60} }}>
+            <Stack.Navigator screenOptions={{ headerStyle: { backgroundColor: '#eee', height:60} }}>
                 <Stack.Screen
                     name="My App"
                     component={DrawerNavigator}

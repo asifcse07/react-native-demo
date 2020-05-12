@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, Button} from 'react-native';
+import {View, Text, StyleSheet, Button, Image, ImageBackground, Modal} from 'react-native';
 import { Icon } from 'react-native-elements';
 import { DrawerActions, useNavigationState } from '@react-navigation/native';
 
@@ -9,7 +9,7 @@ export default function Header({navigation, HeaderTitle}) {
         // console.log(navigation.title)
     }
     return(
-        <View style={styles.header}>
+        <ImageBackground source={require('../assets/game_bg.png')} style={styles.header}>
             <View style={styles.iconView}>
                 <Icon
                     name='menu'
@@ -20,17 +20,18 @@ export default function Header({navigation, HeaderTitle}) {
                     onPress={pressHandler}
                 />
             </View>
-            <View>
+            <View style={styles.headerContent}>
+                <Image source={require('../assets/heart_logo.png')} style={styles.logoStyle}/>
                 <Text style={styles.headerText}>{HeaderTitle}</Text>
             </View>
-        </View>
+        </ImageBackground>
     );
 }
 
 const styles=StyleSheet.create({
     header:{
-        width:'100%',
-        height: '100%',
+        width:'110%',
+        height: '120%',
         flexDirection:'row',
         alignItems:'center',
         justifyContent: 'center',
@@ -46,5 +47,13 @@ const styles=StyleSheet.create({
         // backgroundColor: 'green',
         position:'absolute',
         left: 5,
+    },
+    logoStyle:{
+        height: 25,
+        width: 25,
+        marginHorizontal:10,
+    },
+    headerContent:{
+        flexDirection: 'row',
     }
 })
